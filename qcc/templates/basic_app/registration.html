@@ -1,0 +1,19 @@
+{% extends 'basic_app/base.html' %} {% load static %} {% block body_block %}
+
+<div class="row">
+    <div class="col-6 mx-auto">
+        <div class="mt-5">
+            {% if registered %}
+            <h3>registered</h3>
+            {% else %}
+            <h3>Registration</h3>
+            <form enctype="multipart/form-data" method="POST">
+                {% csrf_token %} {{ user_form.as_p }} {{ profile_form.as_p }}
+                <input type="submit" value="Register" class="btn btn-primary">
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
